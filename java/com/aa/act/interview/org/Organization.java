@@ -5,6 +5,7 @@ import java.util.Optional;
 public abstract class Organization {
 
 	private Position root;
+	private int EmpId = 1;
 	
 	public Organization() {
 		root = createOrganization();
@@ -20,8 +21,15 @@ public abstract class Organization {
 	 * @return the newly filled position or empty if no position has that title
 	 */
 	public Optional<Position> hire(Name person, String title) {
-		//your code here
-		return Optional.empty();
+		
+				// created an instance of employee object expecting an identifier and a string.
+				Employee e=new Employee(EmpId, person);
+
+				//setting position by passing employee object and title of the employee.
+        		Position p=new Position(title, e);
+                System.out.println("Newly Hired Employee is "+p.toString());
+                EmpId++;
+		return Optional.of(p);
 	}
 
 	@Override
